@@ -1,0 +1,143 @@
+<section class="ambassador-perks-section">
+  <div class="container">
+    <div class="ambassador-text">
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.description }}</p>
+    </div>
+    <div class="ambassador-perks">
+      <div class="perk-card">
+        <strong>{{ section.settings.perk1_bold }}</strong> {{ section.settings.perk1_text }}
+      </div>
+      <div class="perk-card">
+        <strong>{{ section.settings.perk2_bold }}</strong> {{ section.settings.perk2_text }}
+      </div>
+      <div class="perk-card">
+        <strong>{{ section.settings.perk3_bold }}</strong> {{ section.settings.perk3_text }}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ambassador-perks-section {
+    background-color: #eeeae4;
+    position: relative;
+    padding: 60px 20px;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .ambassador-text {
+    flex: 1 1 45%;
+    max-width: 45%;
+  }
+  .ambassador-text h2 {
+    color: #4d7c2e;
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .ambassador-text p {
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .ambassador-perks {
+    flex: 1 1 45%;
+    max-width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .perk-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.06);
+    font-size: 15px;
+  }
+  .perk-card strong {
+    font-weight: 700;
+  }
+  .raisins-img {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    max-height: 100%;
+    z-index: 0;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Ambassador Perks",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Perks of Being an Ambassador"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "We’re looking for passionate and inspiring individuals to represent Swarna Raisins..."
+    },
+    {
+      "type": "text",
+      "id": "perk1_bold",
+      "label": "Perk 1 Bold Text",
+      "default": "Enjoy complimentary"
+    },
+    {
+      "type": "text",
+      "id": "perk1_text",
+      "label": "Perk 1 Description",
+      "default": " Swarna Raisins products"
+    },
+    {
+      "type": "text",
+      "id": "perk2_bold",
+      "label": "Perk 2 Bold Text",
+      "default": "Earn commission"
+    },
+    {
+      "type": "text",
+      "id": "perk2_text",
+      "label": "Perk 2 Description",
+      "default": " through your unique referral link"
+    },
+    {
+      "type": "text",
+      "id": "perk3_bold",
+      "label": "Perk 3 Bold Text",
+      "default": "Expand your reach"
+    },
+    {
+      "type": "text",
+      "id": "perk3_text",
+      "label": "Perk 3 Description",
+      "default": " with content boosted directly from your profile, And much more!"
+    },
+    {
+      "type": "image_picker",
+      "id": "raisins_image",
+      "label": "Right Image"
+    }
+
+  ],
+  "presets": [
+    {
+      "name": "Ambassador Perks Section"
+    }
+  ]
+}
+{% endschema %}

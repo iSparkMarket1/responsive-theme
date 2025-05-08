@@ -1,0 +1,109 @@
+<!-- sections/mattress-topper.liquid -->
+<div class="mattress-topper-section">
+  <div class="text-center mb-6">
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.subheading }}</p>
+  </div>
+
+  <div class="topper-grid">
+    {% for block in section.blocks %}
+      <div class="topper-item {% if block.settings.active %}active{% endif %}">
+        <div>
+          <h3>{{ block.settings.title }}</h3>
+        </div>
+
+        <div>
+          <p>{{ block.settings.subtitle }}</p>
+        </div>
+
+        <div>
+          {{ block.settings.video | video_tag: autoplay: true, muted: true, loop: true }}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Mattress Topper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Mattress topper"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Choose between three different types."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Video Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Sub Text"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video URL"
+        },
+        {
+          "type": "checkbox",
+          "id": "active",
+          "label": "Active Border"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Mattress Topper"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+    .mattress-topper-section {
+      padding: 30px;
+    }
+    .topper-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .topper-item {
+    display: flex;
+    justify-content: space-between;
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 12px;
+    }
+    .topper-item.active {
+      border: 2px solid #ff9900;
+    }
+    .topper-item img, .topper-item video {
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+  .topper-item img, .topper-item video {
+      width: 20%;
+      border-radius: 8px;
+      margin-top: 10px;
+  }
+</style>

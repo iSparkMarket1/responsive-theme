@@ -1,0 +1,189 @@
+{% schema %}
+{
+  "name": "Golden Product Card",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Our Special Pick"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Handpicked just for you"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Card Background Color",
+      "default": "#d6d8cf"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_card",
+      "name": "Product Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Product Image"
+        },
+        {
+          "type": "text",
+          "id": "product_title",
+          "label": "Product Title",
+          "default": "GOLDEN BOOST MEDLEY"
+        },
+        {
+          "type": "text",
+          "id": "sub_titlle",
+          "label": "Sub Tittle"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "Golden Product Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="custom-product-section">
+  <h2>{{ section.settings.heading }}</h2>
+  <p>{{ section.settings.subheading }}</p>
+
+  <div class="product-cards">
+    {% for block in section.blocks %}
+      <div class="custom-product-card">
+        <div class="card-wrapper">
+          <div class="card-background" style="background: {{ section.settings.bg_color }}"></div>
+
+          {% if block.settings.product_image %}
+            <img
+              src="{{ block.settings.product_image | image_url: width: 400 }}"
+              alt="{{ block.settings.product_title }}"
+              class="product-image"
+            >
+          {% endif %}
+
+          <p class="product-title">{{ block.settings.product_title }}</p>
+          <p class="product-sub-tittle">{{ block.settings.sub_titlle }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+            .custom-product-section {
+              text-align: center;
+              padding: 40px 20px;
+            }
+
+            .custom-product-section h2 {
+              font-size: 28px;
+              margin-bottom: 10px;
+            }
+
+            .custom-product-section p {
+              font-size: 16px;
+              color: #666;
+              margin-bottom: 30px;
+            }
+
+            .product-cards {
+              display: flex;
+              justify-content: center;
+              gap: 50px;
+              flex-wrap: wrap;
+            }
+
+            .custom-product-card {
+              text-align: center;
+              font-family: sans-serif;
+            }
+
+           .card-wrapper {
+          position: relative;
+          width: 200px;
+          margin: 0 auto;
+          overflow: visible;
+          padding-bottom: 20px;
+        }
+
+        .card-background {
+          position: absolute;
+          top: 0px;
+          left: -13px;
+          width: 100%;
+          height: 59%;
+          border-radius: 15px;
+          transform: rotate(-2deg);
+          z-index: 0;
+          transition: all 0.4s ease;
+        }
+
+        .product-image {
+          position: relative;
+          width: 100%;
+          border-radius: 15px;
+          z-index: 1;
+          transition: all 0.4s ease;
+        }
+
+        .product-title  {
+          position: relative;
+          font-size: 14px;
+          font-weight: bold;
+          margin-top: 10px;
+          z-index: 1;
+          transition: all 0.4s ease;
+        }
+    .product-sub-tittle{
+      display:none;
+    }
+      .card-background{
+       display:block !important;
+      }
+  .product-sub-tittle{
+    display:none;
+  }
+  .product-sub-tittle {
+    position: relative;
+    font-size: 13px;
+    color: #555;
+    margin-top: 5px;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: all 0.3s ease;
+    z-index: 1;
+    padding:20px;
+  }
+  .card-wrapper:hover .product-sub-tittle {
+    opacity: 1;
+    transform: translateY(0);
+    display:block;
+  }
+        .card-wrapper:hover .card-background {
+          height: 100%;
+          transform: unset;
+          top: -30px;
+          left: -5px;
+        }
+
+        .card-wrapper:hover .product-image {
+          padding: 20px;
+        }
+
+        .card-wrapper:hover .product-title {
+          transform: translateY(10px);
+        }
+</style>

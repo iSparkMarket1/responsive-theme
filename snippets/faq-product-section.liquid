@@ -1,0 +1,61 @@
+{% assign questions = product.metafields.custom.faq_question.value %}
+{% assign answers = product.metafields.custom.faq_answer.value %}
+
+{% if questions and answers %}
+  <div class="faq-section">
+    {% for question in questions %}
+      {% assign index = forloop.index0 %}
+      {% if answers[index] %}
+        <div class="faq-item">
+          <h3 class="faq-question" onclick="toggleAnswer(this)">
+            {{ question }}
+          </h3>
+          <p class="faq-answer" style="display: none;">
+            {{ answers[index] }}
+          </p>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endif %}
+
+<style>
+  .faq-section {
+    margin: 20px 0;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+  }
+
+  .faq-question {
+    cursor: pointer;
+    color: #007bff; /* Change to your desired color */
+  }
+
+  .faq-answer {
+    margin-top: 5px;
+    color: #333; /* Change to your desired text color */
+  }
+</style>
+
+<script>
+  function toggleAnswer(element) {
+    // Get all answer elements
+    const allAnswers = document.querySelectorAll('.faq-answer');
+
+    // Hide all answers first
+    allAnswers.forEach(function(answer) {
+      answer.style.display = 'none'; // Hide all answers
+    });
+
+    // Get the answer related to the clicked question
+    const answer = element.nextElementSibling;
+
+    // Show the clicked answer
+    if (answer.style.display === "none" || answer.style.display === "") {
+      answer.style.display = "block"; // Show the answer
+    }
+  }
+</script>

@@ -1,0 +1,166 @@
+<div class="Clip_Maa">
+  <div class="container">
+    <div class="mainnn-div">
+      <div class="main-borderr">
+        <div class="borderr-content">
+          <h2>{{ section.settings.main_text }}</h2>
+        </div>
+        <div class="borderr-button">
+          <button>{{ section.settings.button_text }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "ServiceClip",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "main_text",
+      "label": "ClipRightText"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Click Me"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "ServiceClip"
+    }
+  ]
+}
+{% endschema %}
+<style>
+  .Clip_Maa {
+    background-color: black;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .mainnn-div {
+    background: white;
+    width: fit-content;
+    height: fit-content;
+    clip-path: polygon(0px 36px,
+        36px 0px,
+        100% 0px,
+        100% calc(100% - 36px),
+        calc(100% - 36px) 100%,
+        0px 100%,
+        0px 36px);
+    margin: auto;
+    width: 1113px;
+  }
+
+  .main-borderr {
+    display: flex;
+    justify-content: center;
+    gap: 150px;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 20px;
+  }
+
+  .borderr-content h2 {
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 45px;
+    margin: 0;
+    padding: 35px;
+    color: black;
+    max-width: 509px;
+  }
+
+  .borderr-content b {
+    color: rgba(97, 187, 70, 1);
+  }
+
+  .borderr-img {
+    margin-top: 20px;
+    padding: 30px;
+  }
+
+  .borderr-img img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .borderr-img p {
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 19.5px;
+    margin: 0;
+    color: black;
+  }
+
+  .borderr-button {
+    width: 213px;
+  }
+
+  .borderr-button button {
+    color: white;
+    background-color: green;
+    padding: 20px;
+    font-weight: 800;
+    font-size: 16px;
+    font-family: "Montserrat";
+  }
+
+  .borderr-content strong {
+    color: green;
+  }
+
+  @media (max-width: 768px) {
+    .mainnn-div {
+      width: 100%;
+      padding: 0 20px;
+    }
+
+    .main-borderr {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .borderr-content h2 {
+      font-size: 24px;
+      line-height: 30px;
+      text-align: center;
+    }
+
+    .borderr-button {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .borderr-content h2 {
+      font-size: 20px;
+      line-height: 25px;
+    }
+
+    .borderr-button button {
+      padding: 15px;
+      font-size: 14px;
+    }
+  }
+</style>

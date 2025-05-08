@@ -1,0 +1,112 @@
+{% schema %}
+{
+  "name": "About Us Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "About us"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Section Description",
+      "default": "Modish was born from a story of courage and self-expression. Our founder, a young woman navigating a new city and school, chose to wear her hijab for the first time in a place where few others did. Her bravery and commitment to being true to herself were met with acceptance and admiration, inspiring Modish to empower women everywhere to embrace their individuality with grace."
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "url",
+      "id": "learn_more_link",
+      "label": "Learn More Button Link"
+    },
+    {
+      "type": "text",
+      "id": "learn_more_text",
+      "label": "Learn More Button Text",
+      "default": "LEARN >>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Us Section",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}
+
+{% style %}
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+  .back-img {
+      width: 100%;
+  }
+  .back-img img {
+      width: 100%;
+      max-width: 487.87px;
+  }
+  .cont p {
+      width: 399.79px;
+      color: white;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 18px;
+  }
+  .cont {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid wheat;
+      height: 343px;
+      display: flex;
+      align-content: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 10px;
+  }
+  .main-sec {
+      position: relative;
+      max-width: 487.87px;
+  }
+  .cont h2 {
+      font-size: 28px;
+      line-height: 33.6px;
+      font-weight: 600;
+      color: white;
+  }
+  .cont-btn {
+      width: 156.84px;
+      background: transparent;
+      border: none;
+      color:white;
+  }
+  .btn-back {
+      display: flex;
+      justify-content: end;
+      color: white;
+  }
+{% endstyle %}
+
+<div class="main-sec">
+  <div class="back-img">
+    <img src="{{ section.settings.background_image | image_url }}" alt="">
+  </div>
+  <div class="cont">
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.description }}</p>
+    <div class="btn-back">
+      <a href="{{ section.settings.learn_more_link }}">
+        <button class="cont-btn">{{ section.settings.learn_more_text }}</button>
+      </a>
+    </div>
+  </div>
+</div>

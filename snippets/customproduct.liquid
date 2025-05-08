@@ -1,0 +1,84 @@
+{% assign productcombos = product.metafields.custom.select_product_combo.value %}
+{% comment %}
+ {{ productcombos | json }}
+{% endcomment %}
+
+{% if productcombos %}
+  <div class="products">
+    {% for productcombo in productcombos %}
+      <div class="product-item">
+        <img src="{{ productcombo.featured_image | img_url: 'medium' }}" alt="{{ productcombo.title }}" width="200" height="200" />
+        <h3>{{ productcombo.title }}</h3>
+
+        {% assign has_variant = false %}
+        {% for productvariant in productcombo.variants %}
+          {% if productvariant.id %}
+            {% assign has_variant = true %}
+            <input type="hidden" class="ad-cart" data-product-variant="{{ productvariant.id }}" />
+          {% endif %}
+        {% endfor %}
+        
+        {% unless has_variant %}
+          <button class="ad-cart" disabled>Variant not available</button>
+        {% endunless %}
+      </div>
+    {% endfor %}
+  </div>
+  <button id="add-all-to-cart">ADD ALL TO CART</button>
+{% endif %}
+
+<style>
+  .products {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  #add-all-to-cart {
+    font-size: 20px;
+    font-weight: bolder;
+    padding: 10px;
+    margin: 20px;
+    background-color: cornsilk;
+  }
+</style>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function(){
+    $('#add-all-to-cart').click(function(e){
+      e.preventDefault();
+      let items = []; // Array to hold items to be added
+
+      // Collect all variant IDs from the "ADD TO CART" buttons
+      $('.ad-cart').each(function() {
+        let variantID = $(this).data('product-variant'); // Get the variant ID
+        if (variantID) {
+          items.push({
+            id: variantID,
+            quantity: 1 // Set quantity to 1 for each item
+          });
+        }
+      });
+
+      // Ensure items array is not empty
+      if (items.length > 0) {
+        $.ajax({
+          type: 'POST',
+          url: '/cart/add.js',
+          data: JSON.stringify({ items: items }), // Convert data to JSON
+          dataType: 'json',
+          contentType: 'application/json', // Set content type
+          success: function(response) {
+            // Redirect to cart page
+            window.location.href = '/cart'; // Open cart page
+          },
+          error: function(xhr) {a
+            console.error('Error adding to cart:', xhr.responseText);
+            alert('There was an error adding items to the cart. Please try again.');
+          }
+        });
+      } else {
+        alert('No products available to add to cart. Please refresh the page and try again.');
+      }
+    });
+  });
+</script>

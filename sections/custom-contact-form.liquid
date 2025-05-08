@@ -1,0 +1,267 @@
+{{ 'video-section.css' | asset_url | stylesheet_tag }}
+{{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {}
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {}
+  }
+
+  .custom-unmute-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 5;
+    padding: 10px 20px;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    pointer-events: none;
+  }
+
+  .custom-button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #ffffff;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    pointer-events: auto;
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign video_id = section.settings.video.id | default: section.settings.video_url.id
+  assign video_alt = section.settings.video.alt | default: section.settings.description
+  assign alt = 'sections.video.load_video' | t: description: video_alt | escape
+  assign poster = section.settings.video.preview_image | default: section.settings.cover_image
+-%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="video-section isolate{% unless section.settings.full_width %} page-width{% endunless %} section-{{ section.id }}-padding">
+    <div
+      {% if section.settings.full_width %}
+        class="page-width"
+      {% endif %}
+    >
+      {%- unless section.settings.heading == blank -%}
+        <div class="title-wrapper title-wrapper--no-top-margin">
+          <h2 class="title inline-richtext {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+        </div>
+      {%- endunless -%}
+    </div>
+
+    <div class="video-container" style="position: relative;">
+      <!-- Overlay Text -->
+      <div class="video-overlay">
+        <p>{{ section.settings.overlay_sub_text }}</p>
+        <h2
+          {% if section.settings.animation_title == true %}
+            class="animation-title"
+          {% endif %}
+        >
+          {{ section.settings.overlay_text }}
+        </h2>
+        {% if section.settings.button_text != blank and section.settings.button_link != blank %}
+          <a href="{{ section.settings.button_link }}" class="custom-button" title="{{ section.settings.button_text }}">
+            {{ section.settings.button_text }}
+          </a>
+        {% endif %}
+      </div>
+
+      <!-- Unmute Button -->
+      <button id="unmute-btn" class="custom-unmute-button">🔊 Unmute</button>
+
+      {%- if section.settings.video != null -%}
+        {{
+          section.settings.video
+          | video_tag:
+            image_size: '1100x',
+            autoplay: true,
+            loop: section.settings.enable_video_looping,
+            muted: true,
+            id: 'custom-video'
+        }}
+      {%- elsif section.settings.video_url != null -%}
+        {%- assign loop = section.settings.enable_video_looping
+          | if: true, then: '&loop=1&playlist='
+          | append: video_id, else: ''
+        -%}
+        <iframe
+          id="custom-video"
+          src="{% if section.settings.video_url.type == 'youtube' %}https://www.youtube.com/embed/{{ video_id }}?enablejsapi=1&autoplay=1&mute=1{{ loop }}{% else %}https://player.vimeo.com/video/{{ video_id }}?autoplay=1&muted=1{{ loop }}{% endif %}"
+          class="js-{{ section.settings.video_url.type }}"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+          title="{{ section.settings.description | escape }}"
+        ></iframe>
+      {%- elsif section.settings.image != null -%}
+        <img
+          src="{{ section.settings.image | img_url: 'master' }}"
+          alt="Background Image"
+          class="video-background-image"
+        >
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const video = document.getElementById('custom-video');
+    const unmuteBtn = document.getElementById('unmute-btn');
+
+    if (video && unmuteBtn) {
+      unmuteBtn.addEventListener('click', function () {
+        if (video.tagName === 'VIDEO') {
+          video.muted = false;
+          video.play();
+        } else if (video.tagName === 'IFRAME') {
+          if (video.src.includes('youtube')) {
+            video.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+          }
+          // Vimeo doesn't support unmuting this way
+        }
+        unmuteBtn.style.display = 'none';
+      });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Custom Video",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "overlay_sub_text",
+      "label": "Overlay Sub Text"
+    },
+    {
+      "type": "text",
+      "id": "overlay_text",
+      "label": "Overlay Text"
+    },
+    {
+      "type": "checkbox",
+      "id": "animation_title",
+      "label": "Animate Title",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Watch Our Story",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading Size",
+      "default": "h1",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "hxl", "label": "HXL" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_video_looping",
+      "label": "Enable Video Looping",
+      "default": false
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Upload Video"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "label": "Video URL",
+      "accept": ["youtube", "vimeo"]
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Fallback Background Image"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Video Description"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full Width",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Video Section"
+    }
+  ]
+}
+{% endschema %}

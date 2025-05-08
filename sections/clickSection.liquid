@@ -1,0 +1,358 @@
+<!-- custom-services-section.liquid -->
+<div class="main-click">
+  <div class="container">
+    <div class="click-main_heading">
+      <h1>{{ section.settings.heading }}</h1>
+    </div>
+    <div class="click-main_Subheading">
+      <h3>{{ section.settings.subheading }}</h3>
+    </div>
+    <div class="click-main_cont">
+      <p>{{ section.settings.description }}</p>
+    </div>
+    <div class="pc-click">
+      <div class="child-click">
+        <div class="sidebar">
+          {% for block in section.blocks %}
+            <div class="sidebar-item" data-content="content{{ forloop.index }}">
+              <h2>{{ block.settings.sidebar_title }}</h2>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="content-area">
+          {% for block in section.blocks %}
+            <div id="content{{ forloop.index }}" class="content" style="display: none;">
+              <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.sidebar_title }}">
+              <h2>{{ block.settings.sidebar_title }}</h2>
+              <h6>{{ block.settings.content_description }}</h6>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var sidebarItems = document.querySelectorAll('.sidebar-item');
+        var contents = document.querySelectorAll('.content');
+
+        sidebarItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+                // Hide all content
+                contents.forEach(function(content) {
+                    content.style.display = 'none';
+                });
+
+                // Show the clicked content
+                var contentId = this.getAttribute('data-content');
+                document.getElementById(contentId).style.display = 'block';
+            });
+        });
+    });
+  </script>
+</div>
+
+{% schema %}
+{
+    "name": "Custom Services Section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "heading",
+            "label": "Main Heading",
+            "default": "SERVICES"
+        },
+        {
+            "type": "text",
+            "id": "subheading",
+            "label": "Subheading",
+            "default": "What We Tow"
+        },
+        {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description",
+            "default": "From sleek luxury cars to rugged caravans, we have you covered..."
+        }
+    ],
+    "blocks": [
+        {
+            "type": "block",
+            "name": "Service Block",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "sidebar_title",
+                    "label": "Sidebar Title",
+                    "default": "MOTOR VEHICLES"
+                },
+                {
+                    "type": "textarea",
+                    "id": "content_description",
+                    "label": "Content Description",
+                    "default": "For motorbike towing, we are the clear choice..."
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Content Image"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Custom Services Section"
+        }
+    ]
+}
+{% endschema %}
+<style>
+    .container {
+        width: 1200px;
+        margin: 0 auto;
+        max-width: 100%;
+    }
+
+    .child-click {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .click-main_heading h1 {
+        font-size: 15px;
+        font-weight: 800;
+        line-height: 20.7px;
+        text-align: center;
+        color: rgba(97, 187, 70, 1);
+        font-family: " Montserrat";
+        padding-top: 5px;
+    }
+
+    .click-main_Subheading h3 {
+        font-size: 38px;
+        font-weight: 800;
+        line-height: 45px;
+        text-align: center;
+        font-family: "Orbitron";
+        color: white;
+        margin: 0;
+        padding: 0;
+    }
+
+    .click-main_cont {
+        width: 603px;
+        margin: 0 auto;
+    }
+
+    .click-main_cont p {
+        font-size: 18px;
+        font-weight: 500;
+        font-family: "Montserrat";
+        line-height: 24.84px;
+        text-align: center;
+        color: white;
+    }
+
+    .sidebar {
+        width: 360px;
+    }
+
+    .content-area {
+        width: 589px;
+        border: 1px solid white;
+    }
+
+    .main-click {
+        width: 100%;
+        background-color: rgb(4 0 0 / 90%);
+        background-size: cover;
+    }
+
+    .sidebar-item h2 {
+        font-size: 21px;
+        font-weight: 600;
+        line-height: 45px;
+        font-family: "Orbitron";
+        color: white;
+    }
+
+    .sidebar-item h2:hover {
+        color: green;
+    }
+
+    .content img {
+        width: 100%;
+        max-width: 550px;
+        height: auto;
+        padding-left: 18px;
+        padding-top: 10px;
+    }
+
+    .content h2 {
+        font-size: 21px;
+        font-weight: 800;
+        font-family: "Montserrat";
+        line-height: 28.98px;
+        color: white;
+        padding-left: 10px;
+    }
+
+    .content h6 {
+        max-width: 512px;
+        color: white;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 22.08px;
+        font-family: "Montserrat";
+        padding-left: 10px;
+    }
+
+    .pc-click {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 50px;
+    }
+
+    @media only screen and (max-width: 1200px) {
+      .container {
+          width: 100%;
+          padding: 0 15px;
+      }
+      .click-main_cont {
+          width: 90%;
+      }
+      .sidebar {
+          width: 300px;
+      }
+      .content-area {
+          width: 100%;
+          margin-top: 20px;
+      }
+      .child-click {
+          flex-direction: column;
+      }
+  }
+
+  @media only screen and (max-width: 992px) {
+      .click-main_Subheading h3 {
+          font-size: 32px;
+      }
+
+      .click-main_heading h1 {
+          font-size: 13px;
+      }
+
+      .click-main_cont p {
+          font-size: 16px;
+      }
+
+      .sidebar-item h2 {
+          font-size: 19px;
+      }
+
+      .content h2 {
+          font-size: 19px;
+      }
+
+      .content h6 {
+          font-size: 14px;
+          line-height: 20px;
+      }
+
+      .content img {
+          width: 100%;
+      }
+
+      .sidebar {
+          width: 270px;
+      }
+      .content-area {
+          width: 100%;
+      }
+  }
+
+  @media only screen and (max-width: 768px) {
+      .click-main_Subheading h3 {
+          font-size: 28px;
+      }
+
+      .click-main_heading h1 {
+          font-size: 12px;
+      }
+
+      .click-main_cont p {
+          font-size: 14px;
+      }
+
+      .sidebar-item h2 {
+          font-size: 17px;
+      }
+
+      .content h2 {
+          font-size: 17px;
+      }
+
+      .content h6 {
+          font-size: 13px;
+      }
+
+      .child-click {
+          flex-direction: column;
+      }
+
+      .sidebar {
+          width: 100%;
+          height: 100vh; / Full viewport height /
+          overflow-y: auto; / Enable vertical scrolling /
+          -webkit-overflow-scrolling: touch; / Smooth scrolling for mobile devices /
+      }
+      .content-area {
+          width: 100%;
+          margin-top: 20px;
+      }
+  }
+
+  @media only screen and (max-width: 576px) {
+      .click-main_Subheading h3 {
+          font-size: 24px;
+      }
+
+      .click-main_heading h1 {
+          font-size: 10px;
+      }
+
+      .click-main_cont p {
+          font-size: 12px;
+      }
+
+      .sidebar-item h2 {
+          font-size: 15px;
+      }
+
+      .content h2 {
+          font-size: 15px;
+      }
+
+      .content h6 {
+          font-size: 12px;
+      }
+
+      .child-click {
+          flex-direction: column;
+      }
+
+      .sidebar {
+          width: 100%;
+          height: 100vh; / Full viewport height /
+          overflow-y: auto; / Enable vertical scrolling /
+          -webkit-overflow-scrolling: touch; / Smooth scrolling for mobile devices /
+      }
+      .content-area {
+          width: 100%;
+          margin-top: 20px;
+      }
+  }
+</style>

@@ -1,0 +1,130 @@
+<div class="main-box">
+  <div class="container">
+    <div class="child-box">
+      <div class="image-box">
+        <img
+          src="{{ section.settings.RRight_Image | img_url: 'large' }}"
+          alt="{{ section.settings.Rpight_Image_Heading }}"
+        >
+      </div>
+      <div class="content-box">
+        <h3>{{ section.settings.Right_heading }}</h3>
+        <p>{{ section.settings.Right_Sub_Text }}</p>
+        <h6>{{ section.settings.Right_Last_con }}</h6>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "ImageBlock",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "RRight_Image",
+      "label":"RightImage"
+    },
+    {
+      "type": "text",
+      "id": "Right_heading",
+      "label": "RightImageHeading"
+    },
+    {
+      "type": "text",
+      "id": "Right_Sub_Text",
+      "label": "RightSunText"
+    },
+    {
+      "type": "text",
+      "id": "Right_Last_con",
+      "label": "RightLastCon"
+    }
+  ],
+  "presets": [
+    {
+      "name": "ImageBlock"
+    }
+  ]
+}
+{% endschema %}
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .main-box {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: black;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto; /* Center the container */
+  }
+
+  .child-box {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 70px;
+    flex-wrap: wrap;
+  }
+
+  .image-box {
+    width: 100%;
+    max-width: 448px;
+    height: auto;
+  }
+
+  .image-box img {
+    width: 100%;
+    max-height: 474px;
+  }
+
+  .content-box {
+    width: 100%;
+    max-width: 50%;
+  }
+
+  .content-box h3 {
+    max-width: 100%;
+    font-size: 32px;
+    font-weight: 900;
+    font-family: "Orbitron";
+    line-height: 30px;
+    color: white;
+    padding-bottom: 10px;
+  }
+
+  .content-box p,
+  .content-box h6 {
+    max-width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: "Montserrat";
+    line-height: 22.08px;
+    color: white;
+    padding-bottom: 10px;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .child-box {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .image-box,
+    .content-box {
+      max-width: 100%;
+    }
+
+    .content-box {
+      padding-top: 20px;
+    }
+  }
+</style>

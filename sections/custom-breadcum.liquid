@@ -1,0 +1,172 @@
+{% schema %}
+{
+  "name": "FAQ Popup",
+  "settings": [
+    {
+      "type": "text",
+      "id": "dr_heading",
+      "label": "Faq Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question_text",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer_text",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Popup Section"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="faq-popup-section">
+
+  <!-- Fold down menu heading -->
+  <div class="faq-dropdown-toggle" onclick="toggleFaqDropdown()" style="cursor: pointer; font-size: 20px; font-weight: bold; margin-bottom: 10px;">
+    {{ section.settings.dr_heading }}
+  </div>
+
+  <!-- Questions list inside dropdown -->
+  <div id="faqDropdownContent" style="display: none;">
+    {% for block in section.blocks %}
+      <div class="faq-question" onclick="openFaqModal(`{{ block.settings.answer_text | strip_newlines }}`)">
+        {{ block.settings.question_text }}
+      </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+<!-- Modal -->
+<div id="faqModal" class="faq-modal">
+  <div class="faq-modal-content">
+    <span class="faq-close-btn" onclick="closeFaqModal()">&times;</span>
+    <div id="faqModalText"></div>
+  </div>
+</div>
+
+<style>
+  .faq-popup-section {
+    max-width: 662px;
+    margin: auto;
+    padding: 0 20px 48px;
+  }
+
+  .faq-dropdown-header {
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    background: #f1f1f1;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+  }
+
+  .faq-dropdown-content {
+    display: none;
+    border: 1px solid #eee;
+    border-top: none;
+  }
+
+  .faq-question {
+    cursor: pointer;
+    padding: 20px;
+    border-bottom: 1px solid #3d4b54;
+    font-size: 16px;
+    font-weight: 700;
+    color: #0e1f2a;
+    line-height: 1.4;
+  }
+
+  .faq-modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .faq-modal-content {
+    background: #fff;
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+    position: relative;
+    border-radius: 12px;
+    text-align: left;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .faq-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #333;
+  }
+    .faq-dropdown-toggle {
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .faq-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .rotate-up {
+    transform: rotate(180deg);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+</style>
+
+<script>
+  function toggleFaqDropdown() {
+    const dropdown = document.getElementById("faqDropdownContent");
+    dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+  }
+
+  function openFaqModal(answer) {
+    document.getElementById("faqModalText").innerHTML = answer;
+    document.getElementById("faqModal").style.display = "flex";
+  }
+
+  function closeFaqModal() {
+    document.getElementById("faqModal").style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById("faqModal");
+    if (event.target == modal) {
+      closeFaqModal();
+    }
+  }
+</script>

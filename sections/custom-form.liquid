@@ -1,0 +1,138 @@
+<div class="custom-contact-form-wrapper">
+  <h2 class="form-title">{{ section.settings.heading }}</h2>
+  <div class="form-subtext">
+    <p>{{ section.settings.subheading }}</p>
+    <strong
+      ><em>{{ section.settings.highlight_text }}</em></strong
+    >
+  </div>
+
+  <form method="post" action="/contact#custom-form" accept-charset="UTF-8" class="custom-contact-form" id="custom-form">
+    <input type="hidden" name="form_type" value="contact">
+    <input type="hidden" name="utf8" value="✓">
+
+    <div class="form-grid">
+      <div class="field">
+        <label>Name*</label>
+        <input type="text" name="contact[name]" placeholder="Type" required>
+      </div>
+      <div class="field">
+        <label>Email*</label>
+        <input type="email" name="contact[email]" placeholder="Type" required>
+      </div>
+      <div class="field">
+        <label>Phone Number*</label>
+        <input type="tel" name="contact[phone]" placeholder="+91 Type" required>
+      </div>
+      <div class="field">
+        <label>Instagram/YouTube id*</label>
+        <input type="text" name="contact[instagram]" placeholder="Type" required>
+      </div>
+      <div class="field full-width">
+        <label>{{ section.settings.textarea_label }}</label>
+        <textarea name="contact[body]" placeholder="{{ section.settings.textarea_placeholder }}"></textarea>
+      </div>
+    </div>
+
+    <button type="submit" class="submit-btn">{{ section.settings.button_label }}</button>
+  </form>
+</div>
+
+<style>
+  .custom-contact-form-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  .form-title {
+    color: #4A752C;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  .form-subtext {
+    background-color: #f5f3ed;
+    padding: 20px;
+    margin-bottom: 30px;
+    font-size: 14px;
+  }
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    text-align: left;
+  }
+  .field {
+    display: flex;
+    flex-direction: column;
+  }
+  .field.full-width {
+    grid-column: span 2;
+  }
+  input, textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .submit-btn {
+    background-color: #4A752C;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 4px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  .submit-btn:hover {
+    background-color: #3a5d22;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Custom Contact Form",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Think You’re a Great Fit?"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "We'd love to hear from you! To apply, simply submit a form—we’ll connect with you shortly to make you the star of our products"
+    },
+    {
+      "type": "text",
+      "id": "highlight_text",
+      "label": "Highlighted Text",
+      "default": "Become part of the Swarna Raisins family today!"
+    },
+    {
+      "type": "text",
+      "id": "textarea_label",
+      "label": "Textarea Label",
+      "default": "Got a soft spot for Swarna? Then you’re exactly who we need!"
+    },
+    {
+      "type": "text",
+      "id": "textarea_placeholder",
+      "label": "Textarea Placeholder",
+      "default": "Tell us why you love Swarna..."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Submit Button Label",
+      "default": "Submit"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Contact Form"
+    }
+  ]
+}
+{% endschema %}

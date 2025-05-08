@@ -1,0 +1,165 @@
+{% schema %}
+{
+  "name": "Stopwatch",
+  "settings": [
+    {
+      "type": "text",
+      "id": "initial_time",
+      "label": "Initial Time (HH:MM:SS)",
+      "default": "00:00:00"
+    },
+    {
+      "type": "text",
+      "id": "start_button_text",
+      "label": "Start Button Text",
+      "default": "Start"
+    },
+    {
+      "type": "text",
+      "id": "stop_button_text",
+      "label": "Stop Button Text",
+      "default": "Stop"
+    },
+    {
+      "type": "text",
+      "id": "reset_button_text",
+      "label": "Reset Button Text",
+      "default": "Reset"
+    }
+  ],
+  "presets": [{
+    "name": "Stopwatch",
+    "category": "Custom"
+  }]
+}
+{% endschema %}
+
+<div class="container">
+    <div id="stopwatch">
+        {{ section.settings.initial_time }}
+    </div>
+    <div id="buttons">
+        <button onclick="startTimer()">{{ section.settings.start_button_text }}</button>
+        <button onclick="stopTimer()">{{ section.settings.stop_button_text }}</button>
+        <button onclick="resetTimer()">{{ section.settings.reset_button_text }}</button>
+    </div>
+</div>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+    }
+    #stopwatch {
+        font-size: 100px;
+        box-shadow: 0px 0px 10px black;
+        padding: 10px;
+        color: white;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        border-color: green;
+        background-color:red;
+    }
+    #buttons {
+        display: flex;
+    }
+    button {
+        padding: 28px;
+        background-color: #694343;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-size: large;
+        margin: 10px;
+        width: 100px;
+        transition: all 0.5s;
+    }
+    button:hover {
+        cursor: pointer;
+    }
+    button:active {
+        box-shadow: none;
+        transition: all 0.5s;
+    }
+</style>
+
+<script>
+    const timer = document.getElementById("stopwatch");
+    var hr = 0;
+    var min = 0;
+    var sec = 0;
+    var stoptime = true;
+
+    // Initialize timer from settings
+    function initializeTimer() {
+        const initialTime = "{{ settings.initial_time }}";
+        const timeParts = initialTime.split(":");
+        hr = parseInt(timeParts[0]) || 0;
+        min = parseInt(timeParts[1]) || 0;
+        sec = parseInt(timeParts[2]) || 0;
+
+        timer.innerHTML = formatTime(hr, min, sec);
+    }
+
+    function startTimer() {
+        if (stoptime == true) {
+            stoptime = false;
+            timercycle();
+        }
+    }
+
+    function stopTimer() {
+        if (stoptime == false) {
+            stoptime = true;
+        }
+    }
+
+    function timercycle() {
+        if (stoptime == false) {
+            sec = parseInt(sec);
+            min = parseInt(min);
+            hr = parseInt(hr);
+
+            sec += 1;
+
+            if (sec == 60) {
+                min += 1;
+                sec = 0;
+            }
+
+            if (min == 60) {
+                hr += 1;
+                min = 0;
+                sec = 0;
+            }
+
+            timer.innerHTML = formatTime(hr, min, sec);
+            setTimeout(timercycle, 1000);
+        }
+    }
+
+    function resetTimer() {
+        hr = 0;
+        min = 0;
+        sec = 0;
+        timer.innerHTML = formatTime(hr, min, sec);
+        stoptime = true;
+    }
+
+    function formatTime(hr, min, sec) {
+        return (hr < 10 ? "0" + hr : hr) + ":" + 
+               (min < 10 ? "0" + min : min) + ":" + 
+               (sec < 10 ? "0" + sec : sec);
+    }
+
+    // Initialize the timer on page load
+    window.onload = initializeTimer;
+</script>

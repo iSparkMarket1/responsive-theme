@@ -1,0 +1,95 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+
+<div class="custom-container">
+  <div class="custom-matters-main-content">
+    <div class="custom-matters-content">
+      <h2></h2>
+      <p></p>
+    </div>
+    <div class="custom-mattress-slider-container">
+      <div class="swiper custom-mattress-slider">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide custom-mattress-slide">
+              <img src="{{ block.settings.image | img_url: 'medium' }}" alt="{{ block.settings.title }}">
+              <p>{{ block.settings.title }}</p>
+            </div>
+          {% endfor %}
+        </div>
+        <!-- Navigation Buttons -->
+        <div class="swiper-button-next custom-mattress-next"></div>
+        <div class="swiper-button-prev custom-mattress-prev"></div>
+        <div class="swiper-pagination custom-mattress-pagination"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .custom-mattress-slider-container {
+    max-width: 100%;
+    overflow: hidden;
+    padding: 10px;
+  }
+  .custom-mattress-slider .swiper-slide {
+    text-align: center;
+  }
+  .custom-mattress-slider img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var swiper = new Swiper('.custom-mattress-slider', {
+      slidesPerView: 6,
+      spaceBetween: 10,
+      loop: true,
+      navigation: {
+        nextEl: ".custom-mattress-next",
+        prevEl: ".custom-mattress-prev",
+      },
+      breakpoints: {
+        1024: { slidesPerView: 6 },
+        768: { slidesPerView: 3 },
+        480: { slidesPerView: 1 }
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Custom Swiper Matters",
+   "class":"custom_shoptype_sec",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Slide Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Swiper Matters",
+    }
+  ]
+}
+{% endschema %}
