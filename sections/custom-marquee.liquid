@@ -1,3 +1,65 @@
+{% schema %}
+{
+  "name": "Marquee Section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "back_color",
+      "label": "Section Background Color"
+    },
+    {
+      "type": "text",
+      "id": "fixed_text",
+      "label": "Fixed Text",
+      "default": "OWN THE"
+    },
+    {
+      "type": "color",
+      "id": "fixed_text_color",
+      "label": "Fixed Text Color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Marquee Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "marquee_text",
+          "label": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "marquee_image",
+          "label": "Icon/Image"
+        },
+        {
+          "type": "color",
+          "id": "ma_te_color",
+          "label": "Text Color"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Marquee Section",
+      "blocks": [
+        { "type": "text" },
+        { "type": "text" },
+        { "type": "text" },
+        { "type": "text" },
+        { "type": "text" },
+        { "type": "text" }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
 <div class="main-maruee" style="background-color: {{ section.settings.back_color }};">
   <div class="marquee-container" style="display: flex; align-items: center;">
     
