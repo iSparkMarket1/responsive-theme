@@ -5,12 +5,13 @@
     {
       "type": "color",
       "id": "back_color",
-      "label": "Section Background Color"
+      "label": "Section Background Color",
+      "default": "#1e40af"
     },
     {
       "type": "text",
       "id": "fixed_text",
-      "label": "Fixed Text",
+      "label": "Fixed Text (e.g., OWN THE)",
       "default": "OWN THE"
     },
     {
@@ -28,29 +29,22 @@
         {
           "type": "text",
           "id": "marquee_text",
-          "label": "Text"
-        },
-        {
-          "type": "image_picker",
-          "id": "marquee_image",
-          "label": "Icon/Image"
+          "label": "Marquee Text"
         },
         {
           "type": "color",
           "id": "ma_te_color",
-          "label": "Text Color"
+          "label": "Text Color",
+          "default": "#00bfff"
         }
       ]
     }
   ],
-  "max_blocks": 6,
+  "max_blocks": 10,
   "presets": [
     {
       "name": "Marquee Section",
       "blocks": [
-        { "type": "text" },
-        { "type": "text" },
-        { "type": "text" },
         { "type": "text" },
         { "type": "text" },
         { "type": "text" }
@@ -59,66 +53,3 @@
   ]
 }
 {% endschema %}
-
-<div class="main-maruee" style="background-color: {{ section.settings.back_color }};">
-  <div class="marquee-container" style="display: flex; align-items: center;">
-    
-    <!-- Fixed Text -->
-    <span class="fixed-text" style="color: {{ section.settings.fixed_text_color }}; font-weight: bold; margin-right: 10px;">
-  {{ section.settings.fixed_text }}
-</span>
-
-   <div class="marquee">
-  <div class="marquee-content">
-    {% for repeat in (1..2) %}
-      {% for block in section.blocks %}
-        <span class="marquee-item" style="color: {{ block.settings.ma_te_color | default: '#000000' }};">
-          {% if block.settings.marquee_image %}
-            <img src="{{ block.settings.marquee_image | img_url: 'master' }}" alt="Icon" class="marquee-icon" />
-          {% endif %}
-          {{ block.settings.marquee_text }}
-        </span>
-      {% endfor %}
-    {% endfor %}
-  </div>
-</div>
-
-
-  </div>
-</div>
-
-<style>
-.marquee {
-  overflow: hidden;
-  white-space: nowrap;
-  position: relative;
-  width: 100%;
-}
-
-.marquee-content {
-  display: inline-block;
-  white-space: nowrap;
-  animation: scroll-left 20s linear infinite;
-}
-
-.marquee-item {
-  margin-right: 30px;
-  display: inline-flex;
-  align-items: center;
-}
-
-.marquee-icon {
-  height: 16px;
-  width: auto;
-  margin-right: 5px;
-}
-
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-</style>
