@@ -512,60 +512,20 @@
     "custom_marquee_V7xdh6": {
       "type": "custom-marquee",
       "blocks": {
-        "text_kJdJjz": {
+        "text_zzEBe4": {
           "type": "text",
           "settings": {
             "marquee_text": "shubham",
             "ma_te_color": ""
           }
-        },
-        "text_U7yTtx": {
-          "type": "text",
-          "settings": {
-            "marquee_text": "",
-            "ma_te_color": ""
-          }
-        },
-        "text_zzEBe4": {
-          "type": "text",
-          "settings": {
-            "marquee_text": "",
-            "ma_te_color": ""
-          }
-        },
-        "text_9xCbMR": {
-          "type": "text",
-          "settings": {
-            "marquee_text": "",
-            "ma_te_color": ""
-          }
-        },
-        "text_HgUydy": {
-          "type": "text",
-          "settings": {
-            "marquee_text": "",
-            "ma_te_color": ""
-          }
-        },
-        "text_6kUeWN": {
-          "type": "text",
-          "settings": {
-            "marquee_text": "",
-            "ma_te_color": ""
-          }
         }
       },
       "block_order": [
-        "text_kJdJjz",
-        "text_U7yTtx",
-        "text_zzEBe4",
-        "text_9xCbMR",
-        "text_HgUydy",
-        "text_6kUeWN"
+        "text_zzEBe4"
       ],
       "name": "Marquee Section",
       "settings": {
-        "back_color": "",
+        "back_color": "#334fb4",
         "fixed_text": "OWN THE",
         "fixed_text_color": "#ffffff"
       }
