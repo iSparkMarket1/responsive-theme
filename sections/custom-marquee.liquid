@@ -110,11 +110,12 @@
 
   .marquee-track {
     display: flex;
-    animation: scroll-marquee 20s linear infinite;
+    width: max-content;
+    gap: 30px;
+    animation: scroll-marquee 30s linear infinite;
   }
 
   .marquee-item {
-    margin-right: 40px;
     font-size: 18px;
     font-weight: 500;
     white-space: nowrap;
@@ -125,11 +126,11 @@
       transform: translateX(0%);
     }
     100% {
-      transform: translateX(-33.333%);
+      transform: translateX(-50%);
     }
   }
 
-  /* Optional: Make font smaller on small screens */
+  /* Responsive Fixes */
   @media (max-width: 768px) {
     .fixed-text {
       font-size: 16px;
@@ -142,7 +143,6 @@
 
     .marquee-item {
       font-size: 16px;
-      margin-right: 20px;
     }
   }
 </style>
