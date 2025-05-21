@@ -53,3 +53,56 @@
   ]
 }
 {% endschema %}
+
+<div class="main-maruee" style="background-color: {{ section.settings.back_color }};">
+  <div class="marquee-container" style="display: flex; align-items: center; overflow: hidden;">
+
+    <!-- Fixed Text -->
+    <span class="fixed-text" style="color: {{ section.settings.fixed_text_color }}; font-weight: bold; margin-right: 10px; white-space: nowrap;">
+      {{ section.settings.fixed_text }}
+    </span>
+
+    <!-- Scrolling Marquee -->
+    <div class="marquee">
+      <div class="marquee-content">
+        {% for repeat in (1..2) %}
+          {% for block in section.blocks %}
+            <span class="marquee-item" style="color: {{ block.settings.ma_te_color | default: '#000000' }};">
+              {{ block.settings.marquee_text }}
+            </span>
+          {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  .marquee {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  .marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll-marquee 20s linear infinite;
+  }
+
+  .marquee-item {
+    display: inline-block;
+    margin-right: 40px;
+    font-weight: 500;
+  }
+
+  @keyframes scroll-marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+</style>
