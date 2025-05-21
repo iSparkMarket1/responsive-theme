@@ -1,0 +1,26 @@
+<div class="main-maruee" style="background-color: {{ section.settings.back_color }};">
+  <div class="marquee-container" style="display: flex; align-items: center;">
+    
+    <!-- Fixed Text -->
+    <span class="fixed-text" style="color: #fff; font-weight: bold; margin-right: 10px;">
+      OWN THE
+    </span>
+
+    <!-- Marquee Text -->
+    {% for i in (1..3) %}
+      <div class="marquee">
+        <div class="marquee-content">
+          {% for block in section.blocks %}
+            <span class="marquee-item" style="color: {{ block.settings.ma_te_color | default: '#000000' }};">
+              {% if block.settings.marquee_image %}
+                <img src="{{ block.settings.marquee_image | img_url: 'master' }}" alt="Icon" class="marquee-icon" />
+              {% endif %}
+              {{ block.settings.marquee_text }}
+            </span>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+
+  </div>
+</div>
