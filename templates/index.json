@@ -518,10 +518,50 @@
             "marquee_text": "shubham",
             "ma_te_color": ""
           }
+        },
+        "text_UXLpem": {
+          "type": "text",
+          "settings": {
+            "marquee_text": "shubham",
+            "ma_te_color": ""
+          }
+        },
+        "text_qUMr3J": {
+          "type": "text",
+          "settings": {
+            "marquee_text": "shubham",
+            "ma_te_color": ""
+          }
+        },
+        "text_cxC4Hn": {
+          "type": "text",
+          "settings": {
+            "marquee_text": "shubham",
+            "ma_te_color": ""
+          }
+        },
+        "text_TeGQdy": {
+          "type": "text",
+          "settings": {
+            "marquee_text": "shubham",
+            "ma_te_color": ""
+          }
+        },
+        "text_qencxX": {
+          "type": "text",
+          "settings": {
+            "marquee_text": "shubham",
+            "ma_te_color": ""
+          }
         }
       },
       "block_order": [
-        "text_zzEBe4"
+        "text_zzEBe4",
+        "text_UXLpem",
+        "text_qUMr3J",
+        "text_cxC4Hn",
+        "text_TeGQdy",
+        "text_qencxX"
       ],
       "name": "Marquee Section",
       "settings": {
