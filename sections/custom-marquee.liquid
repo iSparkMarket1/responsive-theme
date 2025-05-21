@@ -57,27 +57,25 @@
 <div class="main-marquee" style="background-color: {{ section.settings.back_color }};">
   <div class="marquee-wrapper">
 
-    <!-- Fixed Text (30%) -->
+    <!-- Fixed Text -->
     {% if section.settings.fixed_text != blank %}
       <div class="fixed-text" style="color: {{ section.settings.fixed_text_color }};">
         {{ section.settings.fixed_text }}
       </div>
     {% endif %}
 
-    <!-- Scrolling Area (70%) -->
+    <!-- Marquee Scrolling Area -->
     <div class="marquee">
       <div class="marquee-track">
-        <div class="marquee-set">
-          {% for i in (1..5) %}
-            {% for block in section.blocks %}
-              {% if block.settings.marquee_text != blank %}
-                <span class="marquee-item" style="color: {{ block.settings.ma_te_color | default: '#000000' }};">
-                  {{ block.settings.marquee_text }}
-                </span>
-              {% endif %}
-            {% endfor %}
+        {% for i in (1..3) %}
+          {% for block in section.blocks %}
+            {% if block.settings.marquee_text != blank %}
+              <span class="marquee-item" style="color: {{ block.settings.ma_te_color | default: '#000000' }};">
+                {{ block.settings.marquee_text }}
+              </span>
+            {% endif %}
           {% endfor %}
-        </div>
+        {% endfor %}
       </div>
     </div>
 
@@ -112,16 +110,11 @@
 
   .marquee-track {
     display: flex;
-    white-space: nowrap;
-    animation: scroll-marquee 15s linear infinite;
-  }
-
-  .marquee-set {
-    display: flex;
+    animation: scroll-marquee 20s linear infinite;
   }
 
   .marquee-item {
-    margin-right: 30px;
+    margin-right: 40px;
     font-size: 18px;
     font-weight: 500;
     white-space: nowrap;
@@ -132,11 +125,11 @@
       transform: translateX(0%);
     }
     100% {
-      transform: translateX(-100%);
+      transform: translateX(-33.333%);
     }
   }
 
-  /* Optional Responsive */
+  /* Optional: Make font smaller on small screens */
   @media (max-width: 768px) {
     .fixed-text {
       font-size: 16px;
