@@ -65,7 +65,7 @@
     <!-- Scrolling Area (70%) -->
     <div class="marquee">
       <div class="marquee-track">
-  {% for i in (1..6) %}
+  {% for i in (1..10) %}
     {% for block in section.blocks %}
       <span class="marquee-item" style="color: {{ block.settings.ma_te_color | default: '#000000' }};">
         {{ block.settings.marquee_text }}
