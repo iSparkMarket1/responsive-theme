@@ -64,9 +64,9 @@
   <div class="marquee-container" style="display: flex; align-items: center;">
     
     <!-- Fixed Text -->
-    <span class="fixed-text" style="color: #fff; font-weight: bold; margin-right: 10px;">
-      OWN THE
-    </span>
+    <span class="fixed-text" style="color: {{ section.settings.fixed_text_color }}; font-weight: bold; margin-right: 10px;">
+  {{ section.settings.fixed_text }}
+</span>
 
     <!-- Marquee Text -->
     {% for i in (1..3) %}
