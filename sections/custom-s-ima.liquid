@@ -1,6 +1,104 @@
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Krossfade Performance",
+  "settings": [
+    {
+      "type": "text",
+      "id": "main_heading",
+      "label": "Main Heading",
+      "default": "FOR ALL OF LIFE’S PERFORMANCES"
+    },
+    {
+      "type": "text",
+      "id": "sub_heading",
+      "label": "Subheading",
+      "default": "See just how you can make yourself run past potential."
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Boost motivation and energy throughout every performance."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "Krossfade Performance Section",
+      "category": "Custom Sections"
+    }
+  ]
+}
 {% endschema %}
+
+<div class="krossfade-performance-section">
+  <div class="page-width text-center">
+    {% if section.settings.main_heading != blank %}
+      <h2>{{ section.settings.main_heading }}</h2>
+    {% endif %}
+    {% if section.settings.sub_heading != blank %}
+      <p>{{ section.settings.sub_heading }}</p>
+    {% endif %}
+    
+    {% if section.settings.main_image != blank %}
+      <div class="main-image">
+        <img src="{{ section.settings.main_image | img_url: 'master' }}" alt="Performance Image">
+      </div>
+    {% endif %}
+
+    <div class="feature-blocks">
+      {% for block in section.blocks %}
+        <div class="feature-block">
+          {% if block.settings.icon != blank %}
+            <img src="{{ block.settings.icon | img_url: '50x' }}" alt="Icon">
+          {% endif %}
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+.krossfade-performance-section {
+  padding: 40px 0;
+}
+.krossfade-performance-section .main-image img {
+  max-width: 100%;
+  height: auto;
+}
+.feature-blocks {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+  background-color:blue;
+}
+.feature-block {
+  text-align: center;
+  max-width: 200px;
+}
+.feature-block img {
+  width: 40px;
+  height: auto;
+  margin-bottom: 10px;
+}
+</style>
