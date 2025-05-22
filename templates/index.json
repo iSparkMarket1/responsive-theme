@@ -631,21 +631,15 @@
             "testimonial_text": "I DRINK THIS BEFORE EVERY WORKOUT AND IT GIVES ME THE STRENGTH TO PUSH PAST MY LIMITS.",
             "client_name": "JONATHAN RUSHER"
           }
-        },
-        "slide_LiVpzp": {
-          "type": "slide",
-          "settings": {
-            "testimonial_text": "I DRINK THIS BEFORE EVERY WORKOUT AND IT GIVES ME THE STRENGTH TO PUSH PAST MY LIMITS.",
-            "client_name": "JONATHAN RUSHER"
-          }
         }
       },
       "block_order": [
-        "slide_H7ABQb",
-        "slide_LiVpzp"
+        "slide_H7ABQb"
       ],
       "name": "Testimonial Slider",
-      "settings": {}
+      "settings": {
+        "background_image": "shopify://shop_images/AdobeStock_286330506_copy2_1.png"
+      }
     }
   },
   "order": [
