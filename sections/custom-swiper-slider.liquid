@@ -8,21 +8,23 @@
 {
   "name": "Testimonial Slider",
   "tag": "section",
-  "settings": [],
+  "class": "testimonial-slider",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    }
+  ],
   "blocks": [
     {
       "type": "slide",
-      "name": "Slide",
+      "name": "Testimonial Slide",
       "settings": [
         {
           "type": "image_picker",
-          "id": "background_image",
-          "label": "Background Image"
-        },
-        {
-          "type": "image_picker",
           "id": "icon",
-          "label": "Icon"
+          "label": "Icon Image"
         },
         {
           "type": "text",
@@ -51,25 +53,24 @@
 
 
 <!-- sections/testimonial-slider.liquid -->
-<section class="testimonial-slider">
-  <div class="swiper testimonialSwiper">
-    <div class="swiper-wrapper">
-      {% for block in section.blocks %}
-        <div class="swiper-slide" style="background-image: url({{ block.settings.background_image | img_url: 'master' }}); background-size: cover; background-position: center;">
-          <div class="overlay" style="background-color: rgba(0, 0, 0, 0.5); padding: 4rem 2rem; text-align: center; color: white;">
-            <div class="icon" style="font-size: 2rem; margin-bottom: 1rem;">
+<section class="testimonial-slider" style="background-image: url({{ section.settings.background_image | img_url: 'master' }}); background-size: cover; background-position: center;">
+  <div class="overlay" style="background-color: rgba(0, 0, 0, 0.5); padding: 4rem 2rem; text-align: center; color: white;">
+    <div class="swiper testimonialSwiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="swiper-slide">
+            <div class="icon" style="margin-bottom: 1rem;">
               <img src="{{ block.settings.icon | img_url: '50x50' }}" alt="icon" style="display: inline-block;">
             </div>
             <h2 style="font-size: 1.5rem; font-weight: bold;">{{ block.settings.testimonial_text }}</h2>
             <p style="margin-top: 1rem; font-weight: 600;">{{ block.settings.client_name }}</p>
           </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
+      </div>
+      <!-- Swiper Controls -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
     </div>
-
-    <!-- Swiper Controls -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
   </div>
 </section>
 
@@ -84,3 +85,4 @@
     });
   });
 </script>
+
