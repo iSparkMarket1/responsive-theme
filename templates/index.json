@@ -102,6 +102,43 @@
         "Right_Last_con": "At Port Macquarie Towing, we work with a wide range of residential and commercial clients, including agricultural customers. In the event that the vehicle is beyond repair following an accident, we are happy to transport it to the nearest scrapyard. We know that a breakdown can be extremely frustrating, which is why we are committed to providing our towing in a prompt, professional and friendly manner."
       }
     },
+    "custom_s_ima_Th3Vh9": {
+      "type": "custom-s-ima",
+      "blocks": {
+        "feature_CemDyc": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Path_374.png",
+            "text": "Boost motivation and energy throughout every performance."
+          }
+        },
+        "feature_wcRnpq": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Path_374.png",
+            "text": "Boost motivation and energy throughout every performance."
+          }
+        },
+        "feature_ENjyra": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Path_374.png",
+            "text": "Boost motivation and energy throughout every performance."
+          }
+        }
+      },
+      "block_order": [
+        "feature_CemDyc",
+        "feature_wcRnpq",
+        "feature_ENjyra"
+      ],
+      "name": "Krossfade Performance Section",
+      "settings": {
+        "main_heading": "FOR ALL OF LIFE’S PERFORMANCES",
+        "sub_heading": "See just how you can make yourself run past potential.",
+        "main_image": "shopify://shop_images/Group_369.png"
+      }
+    },
     "second_w4egBK": {
       "type": "second",
       "disabled": true,
@@ -590,6 +627,7 @@
     "image_banner",
     "featured_collection",
     "first_dDNRrJ",
+    "custom_s_ima_Th3Vh9",
     "second_w4egBK",
     "third_KDbm4T",
     "click_section_cyxhB6",
