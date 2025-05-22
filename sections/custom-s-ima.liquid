@@ -3,6 +3,12 @@
   "name": "Krossfade Performance",
   "settings": [
     {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f2f2f2"
+    },
+    {
       "type": "text",
       "id": "main_heading",
       "label": "Main Heading",
@@ -49,7 +55,7 @@
 }
 {% endschema %}
 
-<div class="krossfade-performance-section">
+<div class="krossfade-performance-section" style="background-color: {{ section.settings.background_color }};">
   <div class="page-width text-center">
     {% if section.settings.main_heading != blank %}
       <h2>{{ section.settings.main_heading }}</h2>
