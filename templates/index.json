@@ -49,6 +49,18 @@
         "show_text_below": false
       }
     },
+    "custom_image_banner_zLg9H9": {
+      "type": "custom-image-banner",
+      "name": "Split Hero Banner",
+      "settings": {
+        "heading": "PUSH PAST POSSIBLE",
+        "subheading": "FORMULAS FOR LIFE PERFORMANCE",
+        "button_label": "SHOP NOW",
+        "button_link": "",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "featured_collection": {
       "type": "featured-collection",
       "disabled": true,
@@ -572,6 +584,7 @@
     }
   },
   "order": [
+    "custom_image_banner_zLg9H9",
     "image_banner",
     "featured_collection",
     "first_dDNRrJ",
