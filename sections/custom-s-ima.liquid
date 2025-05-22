@@ -3,12 +3,6 @@
   "name": "Krossfade Performance",
   "settings": [
     {
-      "type": "color",
-      "id": "background_color",
-      "label": "Background Color",
-      "default": "#f2f2f2"
-    },
-    {
       "type": "text",
       "id": "main_heading",
       "label": "Main Heading",
@@ -24,6 +18,12 @@
       "type": "image_picker",
       "id": "main_image",
       "label": "Main Image"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f2f2f2"
     }
   ],
   "blocks": [
@@ -55,8 +55,8 @@
 }
 {% endschema %}
 
-<div class="krossfade-performance-section" style="background-color: {{ section.settings.background_color }};">
-  <div class="page-width text-center">
+<div class="lifes-performance" style="background-color: {{ section.settings.background_color }};">
+  <div class="text-center">
     {% if section.settings.main_heading != blank %}
       <h2>{{ section.settings.main_heading }}</h2>
     {% endif %}
@@ -70,9 +70,9 @@
       </div>
     {% endif %}
 
-    <div class="feature-blocks">
+    <div class="live-per-blocks">
       {% for block in section.blocks %}
-        <div class="feature-block">
+        <div>
           {% if block.settings.icon != blank %}
             <img src="{{ block.settings.icon | img_url: '50x' }}" alt="Icon">
           {% endif %}
@@ -84,25 +84,24 @@
 </div>
 
 <style>
-.krossfade-performance-section {
+.lifes-performance {
   padding: 40px 0;
 }
-.krossfade-performance-section .main-image img {
+.lifes-performance .main-image img {
   max-width: 100%;
   height: auto;
 }
-.feature-blocks {
+.lifes-performance .live-per-blocks {
   display: flex;
   justify-content: center;
   gap: 40px;
   margin-top: 30px;
-  background-color:blue;
 }
-.feature-block {
+.lifes-performance .live-per-blocks div {
   text-align: center;
   max-width: 200px;
 }
-.feature-block img {
+.lifes-performance .live-per-blocks img {
   width: 40px;
   height: auto;
   margin-bottom: 10px;
