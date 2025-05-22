@@ -4,6 +4,50 @@
 <!-- Before </body> -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
+{% schema %}
+{
+  "name": "Testimonial Slider",
+  "tag": "section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "background_image",
+          "label": "Background Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "testimonial_text",
+          "label": "Testimonial Text",
+          "default": "I DRINK THIS BEFORE EVERY WORKOUT AND IT GIVES ME THE STRENGTH TO PUSH PAST MY LIMITS."
+        },
+        {
+          "type": "text",
+          "id": "client_name",
+          "label": "Client Name",
+          "default": "JONATHAN RUSHER"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Testimonial Slider",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
 
 
 <!-- sections/testimonial-slider.liquid -->
