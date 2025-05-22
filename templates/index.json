@@ -631,10 +631,34 @@
             "testimonial_text": "I DRINK THIS BEFORE EVERY WORKOUT AND IT GIVES ME THE STRENGTH TO PUSH PAST MY LIMITS.",
             "client_name": "JONATHAN RUSHER"
           }
+        },
+        "slide_RzU33n": {
+          "type": "slide",
+          "settings": {
+            "testimonial_text": "I DRINK THIS BEFORE EVERY WORKOUT AND IT GIVES ME THE STRENGTH TO PUSH PAST MY LIMITS.",
+            "client_name": "JONATHAN RUSHER"
+          }
+        },
+        "slide_kwNqYM": {
+          "type": "slide",
+          "settings": {
+            "testimonial_text": "I DRINK THIS BEFORE EVERY WORKOUT AND IT GIVES ME THE STRENGTH TO PUSH PAST MY LIMITS.",
+            "client_name": "JONATHAN RUSHER"
+          }
+        },
+        "slide_Eme4EU": {
+          "type": "slide",
+          "settings": {
+            "testimonial_text": "I DRINK THIS BEFORE EVERY WORKOUT AND IT GIVES ME THE STRENGTH TO PUSH PAST MY LIMITS.",
+            "client_name": "JONATHAN RUSHER"
+          }
         }
       },
       "block_order": [
-        "slide_H7ABQb"
+        "slide_H7ABQb",
+        "slide_RzU33n",
+        "slide_kwNqYM",
+        "slide_Eme4EU"
       ],
       "name": "Testimonial Slider",
       "settings": {
