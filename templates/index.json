@@ -9,6 +9,20 @@
  */
 {
   "sections": {
+    "custom_image_banner_zLg9H9": {
+      "type": "custom-image-banner",
+      "name": "Split Hero Banner",
+      "settings": {
+        "background_image": "shopify://shop_images/Rectangle_2.png",
+        "heading": "PUSH PAST POSSIBLE",
+        "subheading": "FORMULAS FOR LIFE PERFORMANCE",
+        "button_label": "SHOP NOW",
+        "button_link": "#",
+        "right_image": "shopify://shop_images/Screenshot_2025-03-11_at_1.41.53_PM.png",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -47,18 +61,6 @@
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
         "show_text_below": false
-      }
-    },
-    "custom_image_banner_zLg9H9": {
-      "type": "custom-image-banner",
-      "name": "Split Hero Banner",
-      "settings": {
-        "heading": "PUSH PAST POSSIBLE",
-        "subheading": "FORMULAS FOR LIFE PERFORMANCE",
-        "button_label": "SHOP NOW",
-        "button_link": "",
-        "padding_top": 60,
-        "padding_bottom": 60
       }
     },
     "featured_collection": {
