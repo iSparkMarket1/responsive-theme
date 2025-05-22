@@ -136,7 +136,8 @@
       "settings": {
         "main_heading": "FOR ALL OF LIFE’S PERFORMANCES",
         "sub_heading": "See just how you can make yourself run past potential.",
-        "main_image": "shopify://shop_images/Group_369.png"
+        "main_image": "shopify://shop_images/Group_369.png",
+        "background_color": "#f2f2f2"
       }
     },
     "second_w4egBK": {
@@ -620,6 +621,31 @@
         "fixed_text": "OWN THE",
         "fixed_text_color": "#ffffff"
       }
+    },
+    "custom_swiper_slider_rNHRUt": {
+      "type": "custom-swiper-slider",
+      "blocks": {
+        "slide_H7ABQb": {
+          "type": "slide",
+          "settings": {
+            "testimonial_text": "I DRINK THIS BEFORE EVERY WORKOUT AND IT GIVES ME THE STRENGTH TO PUSH PAST MY LIMITS.",
+            "client_name": "JONATHAN RUSHER"
+          }
+        },
+        "slide_LiVpzp": {
+          "type": "slide",
+          "settings": {
+            "testimonial_text": "I DRINK THIS BEFORE EVERY WORKOUT AND IT GIVES ME THE STRENGTH TO PUSH PAST MY LIMITS.",
+            "client_name": "JONATHAN RUSHER"
+          }
+        }
+      },
+      "block_order": [
+        "slide_H7ABQb",
+        "slide_LiVpzp"
+      ],
+      "name": "Testimonial Slider",
+      "settings": {}
     }
   },
   "order": [
@@ -640,6 +666,7 @@
     "custom_image_with_blocks_M3FDLf",
     "mattress_topper_JQWyz7",
     "custom_breadcum_BKECe8",
-    "custom_marquee_V7xdh6"
+    "custom_marquee_V7xdh6",
+    "custom_swiper_slider_rNHRUt"
   ]
 }
