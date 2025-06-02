@@ -448,7 +448,6 @@
     },
     "custom_image_with_blocks_M3FDLf": {
       "type": "custom-image-with-blocks",
-      "disabled": true,
       "settings": {
         "heading": "Perks of Being an Ambassador",
         "description": "We’re looking for passionate and inspiring individuals to represent Swarna Raisins...",
@@ -497,7 +496,6 @@
         "video_9TaGRe",
         "video_rXrfhJ"
       ],
-      "disabled": true,
       "settings": {
         "heading": "Mattress topper",
         "subheading": "Choose between three different types."
