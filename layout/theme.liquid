@@ -419,5 +419,45 @@
           Quizify.loadQuiz("quizify-pop-ec8da1b5980e5c90358cfe8ffee27108");
       };
     </script>
+
+    function updateShippingBar(cart) {
+  const shippingBar = document.getElementById('shipping-message');
+  const threshold = 10000; // $100 in cents
+
+  const total = cart.total_price;
+  const remaining = threshold - total;
+
+  if (!shippingBar) return;
+
+  if (total >= threshold) {
+    shippingBar.textContent = "🎉 You qualify for Free Shipping!";
+  } else {
+    shippingBar.textContent = `🛒 Add $${(remaining / 100).toFixed(2)} more to get Free Shipping`;
+  }
+}
+
+function fetchCartAndUpdateShippingBar() {
+  fetch('/cart.js')
+    .then((res) => res.json())
+    .then((cart) => {
+      updateShippingBar(cart);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", fetchCartAndUpdateShippingBar);
+
+// 🟢 MutationObserver to detect cart drawer updates
+const target = document.querySelector('body');
+const config = { childList: true, subtree: true };
+
+const observer = new MutationObserver(() => {
+  fetchCartAndUpdateShippingBar();
+});
+
+observer.observe(target, config);
+
+// 🟢 Optional: Trigger also on Shopify events (Dawn theme v11+)
+document.addEventListener("cart:updated", fetchCartAndUpdateShippingBar);
+
   </body>
 </html>
