@@ -420,7 +420,8 @@
       };
     </script>
 
-    function updateShippingBar(cart) {
+    <script>
+      function updateShippingBar(cart) {
   const shippingBar = document.getElementById('shipping-message');
   const threshold = 10000; // $100 in cents
 
@@ -459,5 +460,6 @@ observer.observe(target, config);
 // 🟢 Optional: Trigger also on Shopify events (Dawn theme v11+)
 document.addEventListener("cart:updated", fetchCartAndUpdateShippingBar);
 
+    </script>
   </body>
 </html>
