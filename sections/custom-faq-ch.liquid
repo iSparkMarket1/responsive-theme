@@ -48,11 +48,22 @@
 }
 
 .faq-answer {
-  background-color: #f9f9f9;
+  background-color: #223D68;
   padding: 15px 20px;
   display: none;
   color: #fff;
-  background-color: #223d68;
+  max-height: 300px; /* max height for scroll */
+  overflow-y: auto; /* enable vertical scroll */
+  border-top: 1px solid #fff;
+}
+
+.faq-answer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.faq-answer::-webkit-scrollbar-thumb {
+  background-color: #0F161F;
+  border-radius: 3px;
 }
 {% endstylesheet %}
 
@@ -78,16 +89,15 @@
         $this.removeClass('active');
         $answer.slideUp();
       } else {
-        // Optional: close others
         $('.faq-question').removeClass('active');
         $('.faq-answer').slideUp();
-
         $this.addClass('active');
         $answer.slideDown();
       }
     });
   });
 </script>
+
 
 {% schema %}
 {
