@@ -21,17 +21,21 @@
 }
 
 .faq-item {
-  border: none;
   margin-bottom: 10px;
 }
 
 .faq-question {
-  background-color: #0b0f1b;
+  background-color: #0F161F;
   color: #fff;
   padding: 15px 20px;
   font-weight: bold;
   cursor: pointer;
   position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.faq-question.active {
+  background-color: #223D68;
 }
 
 .faq-question::after {
@@ -65,18 +69,22 @@
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const questions = document.querySelectorAll('.faq-question');
-    questions.forEach((q) => {
-      q.addEventListener('click', function () {
-        this.classList.toggle('active');
-        const answer = this.nextElementSibling;
-        if (answer.style.display === "block") {
-          answer.style.display = "none";
-        } else {
-          answer.style.display = "block";
-        }
-      });
+  $(document).ready(function () {
+    $('.faq-question').on('click', function () {
+      const $this = $(this);
+      const $answer = $this.next('.faq-answer');
+
+      if ($this.hasClass('active')) {
+        $this.removeClass('active');
+        $answer.slideUp();
+      } else {
+        // Optional: close others
+        $('.faq-question').removeClass('active');
+        $('.faq-answer').slideUp();
+
+        $this.addClass('active');
+        $answer.slideDown();
+      }
     });
   });
 </script>
@@ -123,7 +131,7 @@
   "max_blocks": 10,
   "presets": [
     {
-      "name": "Custom FAQ Accordion",
+      "name": "FAQ Accordion",
       "category": "Custom"
     }
   ]
