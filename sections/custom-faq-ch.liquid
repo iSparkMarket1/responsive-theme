@@ -1,6 +1,131 @@
+{% stylesheet %}
+.faq-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.faq-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.faq-subtitle {
+  text-align: center;
+  font-size: 16px;
+  color: #6B7280;
+  margin-bottom: 40px;
+}
+
+.faq-item {
+  border: none;
+  margin-bottom: 10px;
+}
+
+.faq-question {
+  background-color: #0b0f1b;
+  color: #fff;
+  padding: 15px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+}
+
+.faq-question::after {
+  content: "+";
+  position: absolute;
+  right: 20px;
+}
+
+.faq-question.active::after {
+  content: "–";
+}
+
+.faq-answer {
+  background-color: #f9f9f9;
+  padding: 15px 20px;
+  display: none;
+  color: #333;
+}
+{% endstylesheet %}
+
+<div class="faq-section">
+  <div class="faq-title">{{ section.settings.title }}</div>
+  <div class="faq-subtitle">{{ section.settings.subtitle }}</div>
+
+  {% for block in section.blocks %}
+    <div class="faq-item">
+      <div class="faq-question">{{ block.settings.question }}</div>
+      <div class="faq-answer">{{ block.settings.answer }}</div>
+    </div>
+  {% endfor %}
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const questions = document.querySelectorAll('.faq-question');
+    questions.forEach((q) => {
+      q.addEventListener('click', function () {
+        this.classList.toggle('active');
+        const answer = this.nextElementSibling;
+        if (answer.style.display === "block") {
+          answer.style.display = "none";
+        } else {
+          answer.style.display = "block";
+        }
+      });
+    });
+  });
+</script>
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "FAQ Accordion",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "FREQUENTLY ASKED QUESTIONS:"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "NEED MORE INFO?"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What is your question?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Your answer goes here."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Custom FAQ Accordion",
+      "category": "Custom"
+    }
+  ]
+}
 {% endschema %}
