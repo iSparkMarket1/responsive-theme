@@ -673,41 +673,33 @@
             "answer": "While standard creams focus only on blood flow, PENIKOSETE targets multiple symptoms at once. Our formula strengthens capillaries, reduces swelling, and improves circulation – all from natural ingredients."
           }
         },
+        "faq_AYFiNk": {
+          "type": "faq",
+          "settings": {
+            "question": "What is Ayurveda?",
+            "answer": "While standard creams focus only on blood flow, PENIKOSETE targets multiple symptoms at once. Our formula strengthens capillaries, reduces swelling, and improves circulation – all from natural ingredients."
+          }
+        },
+        "faq_xzaX9J": {
+          "type": "faq",
+          "settings": {
+            "question": "How does PENIKOSETE differ from regular vein creams?",
+            "answer": "While standard creams focus only on blood flow, PENIKOSETE targets multiple symptoms at once. Our formula strengthens capillaries, reduces swelling, and improves circulation – all from natural ingredients."
+          }
+        },
         "faq_nfkYta": {
           "type": "faq",
           "settings": {
-            "question": "What is your question?",
-            "answer": "Your answer goes here."
-          }
-        },
-        "faq_JLRmVe": {
-          "type": "faq",
-          "settings": {
-            "question": "What is your question?",
-            "answer": "Your answer goes here."
-          }
-        },
-        "faq_3apPcf": {
-          "type": "faq",
-          "settings": {
-            "question": "What is your question?",
-            "answer": "Your answer goes here."
-          }
-        },
-        "faq_zPbkLP": {
-          "type": "faq",
-          "settings": {
-            "question": "What is your question?",
-            "answer": "Your answer goes here."
+            "question": "What is Ayurveda?",
+            "answer": "While standard creams focus only on blood flow, PENIKOSETE targets multiple symptoms at once. Our formula strengthens capillaries, reduces swelling, and improves circulation – all from natural ingredients."
           }
         }
       },
       "block_order": [
         "faq_peGq77",
-        "faq_nfkYta",
-        "faq_JLRmVe",
-        "faq_3apPcf",
-        "faq_zPbkLP"
+        "faq_AYFiNk",
+        "faq_xzaX9J",
+        "faq_nfkYta"
       ],
       "name": "Custom FAQ Accordion",
       "settings": {
