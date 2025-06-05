@@ -662,6 +662,58 @@
       "settings": {
         "background_image": "shopify://shop_images/AdobeStock_286330506_copy2_1.png"
       }
+    },
+    "custom_faq_ch_QKPgqz": {
+      "type": "custom-faq-ch",
+      "blocks": {
+        "faq_peGq77": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your question?",
+            "answer": "Your answer goes here."
+          }
+        },
+        "faq_nfkYta": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your question?",
+            "answer": "Your answer goes here."
+          }
+        },
+        "faq_JLRmVe": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your question?",
+            "answer": "Your answer goes here."
+          }
+        },
+        "faq_3apPcf": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your question?",
+            "answer": "Your answer goes here."
+          }
+        },
+        "faq_zPbkLP": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your question?",
+            "answer": "Your answer goes here."
+          }
+        }
+      },
+      "block_order": [
+        "faq_peGq77",
+        "faq_nfkYta",
+        "faq_JLRmVe",
+        "faq_3apPcf",
+        "faq_zPbkLP"
+      ],
+      "name": "Custom FAQ Accordion",
+      "settings": {
+        "title": "FREQUENTLY ASKED QUESTIONS:",
+        "subtitle": "NEED MORE INFO?"
+      }
     }
   },
   "order": [
@@ -683,6 +735,7 @@
     "mattress_topper_JQWyz7",
     "custom_breadcum_BKECe8",
     "custom_marquee_V7xdh6",
-    "custom_swiper_slider_rNHRUt"
+    "custom_swiper_slider_rNHRUt",
+    "custom_faq_ch_QKPgqz"
   ]
 }
