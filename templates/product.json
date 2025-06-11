@@ -23,6 +23,12 @@
           "type": "title",
           "settings": {}
         },
+        "custom_liquid_CzR4AM": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<table>\n        <tr>\n            <th>Quantity</th>\n            <th>Price Each</th>\n        </tr>\n        <tr>\n            <td>1 - 5</td>\n            <td>$2.50</td>\n        </tr>\n        <tr>\n            <td>6 - 10</td>\n            <td>$2.25</td>\n        </tr>\n        <tr>\n            <td>11 - 20</td>\n            <td>$2.00</td>\n        </tr>\n    </table>"
+          }
+        },
         "shopacado_discounts_discount_table_kaQACP": {
           "type": "shopify://apps/shopacado-discounts/blocks/discount-table/5950831a-4e4e-40a4-82b0-674110b50a14",
           "disabled": true,
@@ -61,25 +67,19 @@
           "settings": {
             "share_label": "Share"
           }
-        },
-        "custom_liquid_CzR4AM": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<table>\n        <tr>\n            <th>Quantity</th>\n            <th>Price Each</th>\n        </tr>\n        <tr>\n            <td>1 - 5</td>\n            <td>$2.50</td>\n        </tr>\n        <tr>\n            <td>6 - 10</td>\n            <td>$2.25</td>\n        </tr>\n        <tr>\n            <td>11 - 20</td>\n            <td>$2.00</td>\n        </tr>\n    </table>"
-          }
         }
       },
       "block_order": [
         "vendor",
         "title",
+        "custom_liquid_CzR4AM",
         "shopacado_discounts_discount_table_kaQACP",
         "price",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
         "description",
-        "share",
-        "custom_liquid_CzR4AM"
+        "share"
       ],
       "settings": {
         "enable_sticky_info": true,
