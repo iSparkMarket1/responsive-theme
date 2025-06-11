@@ -134,7 +134,7 @@ if (!customElements.get('product-form')) {
 
 document.addEventListener("DOMContentLoaded", function () {
   const qtyInput = document.querySelector('input[name="quantity"]');
-  const priceElement = document.querySelector('.price .price-item--regular'); // Dawn theme के लिए ये class होती है
+ const priceElement = document.querySelector('.product__price'); // Dawn theme के लिए ये class होती है
 
   function updatePriceDisplay() {
     const qty = parseInt(qtyInput.value);
