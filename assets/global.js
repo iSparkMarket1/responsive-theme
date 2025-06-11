@@ -1284,7 +1284,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const totalPrice = unitPrice * qty;
 
     if (priceElement) {
-      priceElement.innerText = `${totalPrice.toFixed(2)} kr`;
+      priceElement.innerText = `$${totalPrice.toFixed(2)}`;
     }
   }
 
@@ -1294,3 +1294,4 @@ document.addEventListener("DOMContentLoaded", function () {
     updatePriceDisplay(); // Load पर भी दिखाओ
   }
 });
+
