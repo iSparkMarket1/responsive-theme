@@ -132,24 +132,5 @@ if (!customElements.get('product-form')) {
   );
 }
 
-// Shopify Dawn या किसी भी 2.0 थीम के लिए काम करता है
-document.addEventListener('DOMContentLoaded', function() {
-  const qtyInput = document.querySelector('input[name="quantity"]');
-  const priceElement = document.querySelector('.product__price'); // अपनी थीम के अनुसार selector चेक करें
 
-  const updatePrice = () => {
-    const qty = parseInt(qtyInput.value);
-    let newPrice = 2.5; // default
-
-    if (qty >= 11) {
-      newPrice = 2.00;
-    } else if (qty >= 6) {
-      newPrice = 2.25;
-    }
-
-    priceElement.innerText = `${newPrice.toFixed(2)} kr`;
-  };
-
-  qtyInput.addEventListener('input', updatePrice);
-});
 
