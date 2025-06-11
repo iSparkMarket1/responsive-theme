@@ -34,12 +34,6 @@
           "type": "price",
           "settings": {}
         },
-        "custom_liquid_CzR4AM": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<table>\n        <tr>\n            <th>Quantity</th>\n            <th>Price Each</th>\n        </tr>\n        <tr>\n            <td>1 - 5</td>\n            <td>$2.50</td>\n        </tr>\n        <tr>\n            <td>6 - 10</td>\n            <td>$2.25</td>\n        </tr>\n        <tr>\n            <td>11 - 20</td>\n            <td>$2.00</td>\n        </tr>\n    </table>"
-          }
-        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -50,6 +44,12 @@
         "quantity_selector": {
           "type": "quantity_selector",
           "settings": {}
+        },
+        "custom_liquid_CzR4AM": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<table>\n        <tr>\n            <th>Quantity</th>\n            <th>Price Each</th>\n        </tr>\n        <tr>\n            <td>1 - 5</td>\n            <td>$2.50</td>\n        </tr>\n        <tr>\n            <td>6 - 10</td>\n            <td>$2.25</td>\n        </tr>\n        <tr>\n            <td>11 - 20</td>\n            <td>$2.00</td>\n        </tr>\n    </table>\n\n<style>\ntable {\n    width: 100%;\n}\ntable tbody th, table tbody td {\n    padding: 10px !important;\n    line-height: 1em;\n}\n</style>"
+          }
         },
         "buy_buttons": {
           "type": "buy_buttons",
@@ -74,9 +74,9 @@
         "title",
         "shopacado_discounts_discount_table_kaQACP",
         "price",
-        "custom_liquid_CzR4AM",
         "variant_picker",
         "quantity_selector",
+        "custom_liquid_CzR4AM",
         "buy_buttons",
         "description",
         "share"
