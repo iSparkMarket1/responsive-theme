@@ -146,6 +146,13 @@
         "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
         "disabled": true,
         "settings": {}
+      },
+      "5460929749692845798": {
+        "type": "shopify://apps/shopacado-discounts/blocks/enable/5950831a-4e4e-40a4-82b0-674110b50a14",
+        "disabled": false,
+        "settings": {
+          "theme_id": "181185642837"
+        }
       }
     },
     "color_schemes": {
