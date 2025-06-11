@@ -23,6 +23,12 @@
           "type": "title",
           "settings": {}
         },
+        "shopacado_discounts_discount_table_kaQACP": {
+          "type": "shopify://apps/shopacado-discounts/blocks/discount-table/5950831a-4e4e-40a4-82b0-674110b50a14",
+          "settings": {
+            "theme_id": "181185642837"
+          }
+        },
         "price": {
           "type": "price",
           "settings": {}
@@ -54,24 +60,18 @@
           "settings": {
             "share_label": "Share"
           }
-        },
-        "shopacado_discounts_discount_table_kaQACP": {
-          "type": "shopify://apps/shopacado-discounts/blocks/discount-table/5950831a-4e4e-40a4-82b0-674110b50a14",
-          "settings": {
-            "theme_id": "181185642837"
-          }
         }
       },
       "block_order": [
         "vendor",
         "title",
+        "shopacado_discounts_discount_table_kaQACP",
         "price",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
         "description",
-        "share",
-        "shopacado_discounts_discount_table_kaQACP"
+        "share"
       ],
       "settings": {
         "enable_sticky_info": true,
