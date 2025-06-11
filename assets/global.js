@@ -1266,3 +1266,31 @@ class BulkAdd extends HTMLElement {
 if (!customElements.get('bulk-add')) {
   customElements.define('bulk-add', BulkAdd);
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const qtyInput = document.querySelector('input[name="quantity"]');
+  const priceElement = document.querySelector('.price-item--sale.price-item--last');
+
+  function updatePriceDisplay() {
+    const qty = parseInt(qtyInput.value);
+    let unitPrice = 2.5;
+
+    if (qty >= 11) {
+      unitPrice = 2.0;
+    } else if (qty >= 6) {
+      unitPrice = 2.25;
+    }
+
+    const totalPrice = unitPrice * qty;
+
+    if (priceElement) {
+      priceElement.innerText = `${totalPrice.toFixed(2)} kr`;
+    }
+  }
+
+  if (qtyInput && priceElement) {
+    qtyInput.addEventListener("change", updatePriceDisplay);
+    qtyInput.addEventListener("input", updatePriceDisplay);
+    updatePriceDisplay(); // Load पर भी दिखाओ
+  }
+});
