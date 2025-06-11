@@ -132,32 +132,6 @@ if (!customElements.get('product-form')) {
   );
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const qtyInput = document.querySelector('input[name="quantity"]');
- const priceElement = document.querySelector('.product__price'); // Dawn theme के लिए ये class होती है
 
-  function updatePriceDisplay() {
-    const qty = parseInt(qtyInput.value);
-    let unitPrice = 2.5; // Default
-
-    if (qty >= 11) {
-      unitPrice = 2.0;
-    } else if (qty >= 6) {
-      unitPrice = 2.25;
-    }
-
-    const totalPrice = unitPrice * qty;
-
-    if (priceElement) {
-      priceElement.innerText = `${totalPrice.toFixed(2)} kr`;
-    }
-  }
-
-  if (qtyInput && priceElement) {
-    qtyInput.addEventListener("change", updatePriceDisplay);
-    qtyInput.addEventListener("input", updatePriceDisplay);
-    updatePriceDisplay(); // Page load पर भी run हो
-  }
-});
 
 
