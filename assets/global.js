@@ -1246,7 +1246,7 @@ class BulkAdd extends HTMLElement {
     } else {
       event.target.setCustomValidity('');
       event.target.reportValidity();
-      this.startQueue(index, inputValue);
+      this.startQueue(index, inputValue);https://demo-store-shubham.myshopify.com/?_ab=0&_bt=eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaVZrWlcxdkxYTjBiM0psTFhOb2RXSm9ZVzB1YlhsemFHOXdhV1o1TG1OdmJRWTZCa1ZVIiwiZXhwIjoiMjAyNS0wNy0wMVQxMToxMzoyNi41NzZaIiwicHVyIjoicGVybWFuZW50X3Bhc3N3b3JkX2J5cGFzcyJ9fQ%3D%3D--2f85a2bfc234a2a166a5e0df6f4b08c1a6e31320&_fd=0&_sc=1&key=a63e7416a0530accaa2c6e1de50a96fb33e4f500a9fa26a7ff7e85b08ae03cd7&preview_theme_id=181185642837
     }
   }
 
