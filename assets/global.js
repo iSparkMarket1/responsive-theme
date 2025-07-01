@@ -1291,7 +1291,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (qtyInput && priceElement) {
     qtyInput.addEventListener("change", updatePriceDisplay);
     qtyInput.addEventListener("input", updatePriceDisplay);
-    updatePriceDisplay(); // Load पर भी दिखाओ
+    updatePriceDisplay(); 
   }
 });
 
